@@ -1,0 +1,22 @@
+{
+  "name": "neon-hand-control---2d---3d-air-drawing",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npx vite",
+    "build": "npx vite build",
+    "build:check": "npx tsc --noEmit && npx vite build",
+    "type-check": "npx tsc --noEmit",
+    "preview": "npx vite preview"
+  },
+  "dependencies": {
+    "@mediapipe/hands": "^0.4.1675466864",
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.182.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4"
+  }
+}

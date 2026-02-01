@@ -1,0 +1,263 @@
+/**
+ * Main stylesheet for Neon Hand Control application.
+ * Modern, clean design with neon aesthetic.
+ * Architecture: Centralized styles allow easy theming or dark/light mode.
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0a0a0a;
+  color: #ffffff;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.header {
+  padding: 1rem 2rem;
+  background: rgba(0, 255, 255, 0.1);
+  border-bottom: 2px solid #00ffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+  color: #00ffff;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* Mirror for natural hand movement */
+}
+
+.drawing-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+#canvas-2d {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: none;
+}
+
+#scene-3d {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: none;
+}
+
+#hand-tracking-overlay-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.controls-container {
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.8);
+  border-top: 1px solid rgba(0, 255, 255, 0.3);
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.control-btn {
+  padding: 0.6rem 1.2rem;
+  background: rgba(0, 255, 255, 0.1);
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.control-btn:hover {
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.control-btn:active {
+  transform: translateY(0);
+}
+
+.clear-btn {
+  background: rgba(255, 0, 100, 0.1);
+  border-color: #ff0064;
+  color: #ff0064;
+}
+
+.clear-btn:hover {
+  background: rgba(255, 0, 100, 0.2);
+  box-shadow: 0 0 15px rgba(255, 0, 100, 0.5);
+}
+
+.export-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.export-group span {
+  color: #888;
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+}
+
+#mode-indicator {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.mode-indicator {
+  padding: 0.5rem 1rem;
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid #00ffff;
+  border-radius: 4px;
+  text-shadow: 0 0 5px #00ffff;
+}
+
+.mode-indicator.mode-2d {
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+.mode-indicator.mode-3d {
+  background: rgba(255, 0, 255, 0.2);
+  border-color: #ff00ff;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.4);
+  text-shadow: 0 0 5px #ff00ff;
+  color: #ff00ff;
+}
+
+.gesture-status {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #aaa;
+}
+
+.instructions {
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 8px;
+  max-width: 300px;
+  z-index: 10;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.instructions h3 {
+  color: #00ffff;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  text-shadow: 0 0 5px #00ffff;
+}
+
+.instructions ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.instructions li {
+  margin: 0.4rem 0;
+  color: #ccc;
+}
+
+.instructions li strong {
+  color: #00ffff;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header {
+    padding: 0.8rem 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .header h1 {
+    font-size: 1.4rem;
+  }
+
+  .controls-container {
+    padding: 0.8rem 1rem;
+    gap: 1rem;
+  }
+
+  .control-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .instructions {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 1rem;
+    max-width: 100%;
+  }
+}
